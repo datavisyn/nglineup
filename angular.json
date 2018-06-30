@@ -4,37 +4,37 @@
   "newProjectRoot": "projects",
   "projects": {
     "nglineup": {
-      "root": "projects/nglineup",
-      "sourceRoot": "projects/nglineup/src",
+      "root": "",
+      "sourceRoot": "./src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/nglineup/tsconfig.lib.json",
-            "project": "projects/nglineup/ng-package.json"
+            "tsConfig": "./tsconfig.lib.json",
+            "project": "./ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/nglineup/ng-package.prod.json"
+              "project": "./ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/nglineup/src/test.ts",
-            "tsConfig": "projects/nglineup/tsconfig.spec.json",
-            "karmaConfig": "projects/nglineup/karma.conf.js"
+            "main": "./src/test.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "karmaConfig": "./karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/nglineup/tsconfig.lib.json",
-              "projects/nglineup/tsconfig.spec.json"
+              "./tsconfig.lib.json",
+              "./tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

@@ -10,7 +10,19 @@
       true,
       "check-space"
     ],
+    "component-selector": [
+      true,
+      "element",
+      "lib",
+      "kebab-case"
+    ],
     "curly": true,
+    "directive-selector": [
+      true,
+      "attribute",
+      "lib",
+      "camelCase"
+    ],
     "deprecation": {
       "severity": "warn"
     },
