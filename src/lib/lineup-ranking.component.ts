@@ -22,7 +22,8 @@ export abstract class ALineUpColumnBuilder {
 }
 
 @Component({
-  selector: 'lineup-column'
+  selector: 'lineup-column',
+  template: ''
 })
 export class LineUpColumnComponent extends ALineUpColumnBuilder {
   @Input()
@@ -77,7 +78,8 @@ export class LineUpRankingComponent implements IBuilderAdapterRankingProps {
 
 
 @Component({
-  selector: 'lineup-impose-column'
+  selector: 'lineup-impose-column',
+  template: ''
 })
 export class LineUpImposeColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterImposeColumnProps {
   @Input()
@@ -111,7 +113,8 @@ export class LineUpNestedColumnComponent extends ALineUpColumnBuilder implements
 
 
 @Component({
-  selector: 'lineup-weighted-column'
+  selector: 'lineup-weighted-column',
+  template: ''
 })
 export class LineUpWeightedColumnComponent extends ALineUpColumnBuilder {
   @Input()
@@ -199,7 +202,8 @@ export class LineUpSupportColumnComponent extends ALineUpColumnBuilder implement
 
 
 @Component({
-  selector: 'lineup-all-columns'
+  selector: 'lineup-all-columns',
+  template: ''
 })
 export class LineUpAllColumnsComponent extends ALineUpColumnBuilder {
   build() {

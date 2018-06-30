@@ -24,7 +24,8 @@ import {
 
 
 @Component({
-  selector: 'lineup-column-desc'
+  selector: 'lineup-column-desc',
+  template: ''
 })
 export class LineUpColumnDescComponent implements IBuilderAdapterColumnDescProps {
   @Input()
@@ -43,7 +44,8 @@ export class LineUpColumnDescComponent implements IBuilderAdapterColumnDescProps
 
 
 @Component({
-  selector: 'lineup-categorical-desc'
+  selector: 'lineup-categorical-desc',
+  template: ''
 })
 export class LineUpCategoricalColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterCategoricalColumnDescProps {
   @Input()
@@ -62,7 +64,8 @@ export class LineUpCategoricalColumnDescComponent extends LineUpColumnDescCompon
 
 
 @Component({
-  selector: 'lineup-date-desc'
+  selector: 'lineup-date-desc',
+  template: ''
 })
 export class LineUpDateColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterDateColumnDescProps {
   @Input()
@@ -77,7 +80,8 @@ export class LineUpDateColumnDescComponent extends LineUpColumnDescComponent imp
 
 
 @Component({
-  selector: 'lineup-hierarchy-desc'
+  selector: 'lineup-hierarchy-desc',
+  template: ''
 })
 export class LineUpHierarchyColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterHierarchyColumnDescProps {
   @Input()
@@ -96,7 +100,8 @@ export class LineUpHierarchyColumnDescComponent extends LineUpColumnDescComponen
 
 
 @Component({
-  selector: 'lineup-number-desc'
+  selector: 'lineup-number-desc',
+  template: ''
 })
 export class LineUpNumberColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterNumberColumnDescProps {
   @Input()
@@ -117,7 +122,8 @@ export class LineUpNumberColumnDescComponent extends LineUpColumnDescComponent i
 
 
 @Component({
-  selector: 'lineup-string-desc'
+  selector: 'lineup-string-desc',
+  template: ''
 })
 export class LineUpStringColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterStringColumnDescProps {
   @Input()
@@ -136,7 +142,8 @@ export class LineUpStringColumnDescComponent extends LineUpColumnDescComponent i
 
 
 @Component({
-  selector: 'lineup-actions-desc'
+  selector: 'lineup-actions-desc',
+  template: ''
 })
 export class LineUpActionsColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterActionsColumnDescProps {
   @Input()

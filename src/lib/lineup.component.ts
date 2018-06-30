@@ -24,25 +24,13 @@ import {
     <main class="lu-wrapper" #lu></main>
     <ng-content></ng-content>
   `,
-  styles: [`
-  :host {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 500px;
-  }
-
-  .lu {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }`],
-  styleUrls: ['~lineupjs/build/LineUpJS..css']
+  styleUrls: [
+    './lineup.component.css',
+    '../../node_modules/lineupjs/build/LineUpJS.css'
+  ]
 })
 export class LineUpComponent implements OnInit, AfterViewInit, IBuilderAdapterProps  {
-  @ViewChild('#lu')
+  @ViewChild('lu')
   private _main: ElementRef<HTMLDivElement>;
 
   @ContentChildren(LineUpRankingComponent)
