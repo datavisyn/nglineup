@@ -13,7 +13,7 @@
     "component-selector": [
       true,
       "element",
-      "lib",
+      "lineup",
       "kebab-case"
     ],
     "curly": true,
