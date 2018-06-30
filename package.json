@@ -1,13 +1,37 @@
 {
   "name": "nglineup",
-  "version": "0.0.1",
+  "description": "LineUp is an interactive technique designed to create, visualize and explore rankings of items based on a set of heterogeneous attributes.",
+  "homepage": "https://github.com/datavisyn/nglineup",
+  "version": "0.0.1-alpha.0",
+  "author": {
+    "name": "Samuel Gratzl",
+    "email": "samuel_gratzl@gmx.at"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/datavisyn/nglineup/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datavisyn/nglineup.git"
+  },
   "scripts": {
+    "clean": "rimraf build dist",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:dev": "ng build",
+    "build:prod": "ng build --prod",
+    "prebuild": "npm test",
+    "build": "npm run build:prod",
     "test": "ng test",
+    "posttest": "npm run lint",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "preversion": "npm test",
+    "prepublishOnly": "npm run build:prod",
+    "release:major": "npm version major && npm publish && git push --follow-tags",
+    "release:minor": "npm version minor && npm publish && git push --follow-tags",
+    "release:patch": "npm version patch && npm publish && git push --follow-tags",
+    "release:pre": "npm version prerelease && npm publish --tag=next && git push --follow-tags"
   },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
@@ -37,5 +61,8 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
+  },
+  "dependencies": {
+    "lineupjs": "^3.0.1-beta.13"
   }
 }
