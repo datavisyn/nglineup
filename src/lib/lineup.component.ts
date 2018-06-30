@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-nglineup',
+  selector: 'lib-lineup',
   template: `
-    <p>
-      nglineup works!
-    </p>
+    <ng-content></ng-content>
   `,
   styles: []
 })
-export class NglineupComponent implements OnInit {
+export class LineUpComponent implements OnInit {
 
   constructor() { }
 

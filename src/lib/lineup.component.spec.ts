@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NglineupComponent } from './nglineup.component';
+import { LineUpComponent } from './lineup.component';
 
-describe('NglineupComponent', () => {
-  let component: NglineupComponent;
-  let fixture: ComponentFixture<NglineupComponent>;
+describe('LineUpComponent', () => {
+  let component: LineUpComponent;
+  let fixture: ComponentFixture<LineUpComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NglineupComponent ]
+      declarations: [ LineUpComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NglineupComponent);
+    fixture = TestBed.createComponent(LineUpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
