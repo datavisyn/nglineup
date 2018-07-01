@@ -1,27 +1,148 @@
-# Nglineup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+LineUp.js Angular Wrapper
+=========================
 
-## Development server
+[![License: MIT][mit-image]][mit-url] [![NPM version][npm-image]][npm-url]  [![CircleCI][ci-image]][ci-url]
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+LineUp is an interactive technique designed to create, visualize and explore rankings of items based on a set of heterogeneous attributes.
+This is a [Angular]https://angular.io/) wrapper around the JavaScript library [LineUp.js](https://github.com/datavisyn/lineupjs). Details about the LineUp visualization technique can be found at [http://lineup.caleydo.org](http://lineup.caleydo.org).
 
-## Code scaffolding
+Usage
+-----
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Installation**
 
-## Build
+```bash
+npm install --save nglineup
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**Minimal Usage Example**
 
-## Running unit tests
+`app.module.ts`:
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { LineUpModule } from '../lib/lineup.module';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+import { AppComponent } from './app.component.1';
 
-## Running end-to-end tests
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    LineUpModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`app.component.ts`:
+```ts
+import { Component } from '@angular/core';
 
-## Further help
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  readonly data = <any[]>[];
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  readonly cats = ['c1', 'c2', 'c3'];
+
+  constructor() {
+    const cats = this.cats;
+    for (let i = 0; i < 100; ++i) {
+      this.data.push({
+        a: Math.random() * 10,
+        d: 'Row ' + i,
+        cat: cats[Math.floor(Math.random() * 3)],
+        cat2: cats[Math.floor(Math.random() * 3)]
+      });
+    }
+  }
+}
+```
+
+`app.component.html`:
+```html
+<lineup-lineup [data]="data"></lineup-lineup>
+```
+
+TODO
+
+**Advanced Usage Example**
+
+`app.component.html`:
+```html
+<lineup-lineup [data]="data" [defaultRanking]="true" style="height: 800px">
+  <lineup-string-column-desc column="d" label="Label" [width]="100"></lineup-string-column-desc>
+  <lineup-categorical-column-desc column="cat" [categories]="cats" color="green"></lineup-categorical-column-desc>
+  <lineup-categorical-column-desc column="cat2" [categories]="cats" color="blue"></lineup-categorical-column-desc>
+  <lineup-number-column-desc column="a" [domain]="[0, 10]" color="blue"></lineup-number-column-desc>
+
+  <lineup-ranking groupBy="cat" sortBy="a:desc">
+    <lineup-support-column type="*"></lineup-support-column>
+    <lineup-column column="*"></lineup-column>
+    <lineup-impose-column label="a+cat" column="a" categoricalColumn="cat2"></lineup-impose-column>
+  </lineup-ranking>
+</lineup-lineup>
+```
+
+TODO
+
+
+Supported Browsers
+------------------
+
+ * Chrome 64+ (best performance)
+ * Firefox 57+
+ * Edge 16+
+
+
+
+Development Environment
+-----------------------
+
+**Installation**
+
+```bash
+git clone https://github.com/datavisyn/nglineup.git
+cd nglineup
+npm install
+```
+
+**Build distribution packages**
+
+```bash
+npm run build
+```
+
+**Run Linting**
+
+```bash
+npm run lint
+```
+
+
+**Serve integrated webserver**
+
+```bash
+npm start
+```
+
+
+Authors
+-------
+
+ * Samuel Gratzl (@sgratzl)
+
+[npm-image]: https://badge.fury.io/js/nglineup.svg
+[npm-url]: https://npmjs.org/package/nglineup
+[mit-image]: https://img.shields.io/badge/License-MIT-yellow.svg
+[mit-url]: https://opensource.org/licenses/MIT
+[ci-image]: https://circleci.com/gh/datavisyn/nglineup.svg?style=shield
+[ci-url]: https://circleci.com/gh/datavisyn/nglineup
