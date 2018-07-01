@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {LineUpComponent} from './lineup.component';
+import {LineUpComponent, TaggleComponent} from './lineup.component';
 import {LineUpWeightedSumColumnComponent, LineUpWeightedColumnComponent,
   LineUpSupportColumnComponent, LineUpScriptedColumnComponent, LineUpReduceColumnComponent,
   LineUpNestedColumnComponent, LineUpImposeColumnComponent, LineUpAllColumnsComponent,
@@ -11,7 +11,7 @@ import {LineUpActionsColumnDescComponent, LineUpColumnDescComponent,
 @NgModule({
   imports: [
   ],
-  declarations: [LineUpComponent,
+  declarations: [LineUpComponent, TaggleComponent,
     LineUpWeightedSumColumnComponent, LineUpWeightedColumnComponent, LineUpSupportColumnComponent,
     LineUpScriptedColumnComponent, LineUpReduceColumnComponent, LineUpNestedColumnComponent,
     LineUpImposeColumnComponent, LineUpAllColumnsComponent, LineUpColumnComponent, LineUpRankingComponent,

@@ -122,6 +122,10 @@ export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDest
     rankingBuilders: () => this.rankings.map((d) => d.merge())
   });
 
+  protected createInstance(node: HTMLElement, data: LocalDataProvider, options: Partial<ITaggleOptions>): LineUp | Taggle {
+    return new LineUp(node, data, options);
+  }
+
   onSelectionChanged(selection: number[]) {
     this.selection = selection;
     this.selectionChange.emit(selection);
@@ -132,10 +136,6 @@ export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDest
     this.highlightChange.emit(highlight);
   }
 
-  protected createInstance(node: HTMLElement, data: LocalDataProvider, options: Partial<ITaggleOptions>): LineUp | Taggle {
-    return new LineUp(node, data, options);
-  }
-
   ngOnInit() {
   }
 
@@ -144,7 +144,6 @@ export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     const changed = new Set(Object.keys(changes).filter((d) => !changes[d].firstChange));
     if (changed.size > 0) {
       this._adapter.componentDidUpdate((prop) => changed.has(prop));
@@ -153,5 +152,19 @@ export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDest
 
   ngOnDestroy() {
     this._adapter.componentWillUnmount();
+  }
+}
+
+
+@Component({
+  selector: 'lineup-taggle',
+  template: `
+    <div #lu></div>
+    <ng-content></ng-content>
+  `
+})
+export class TaggleComponent extends LineUpComponent {
+  protected createInstance(node: HTMLElement, data: LocalDataProvider, options: Partial<ITaggleOptions>) {
+    return new Taggle(node, data, options);
   }
 }
