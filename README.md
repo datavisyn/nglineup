@@ -72,7 +72,11 @@ export class AppComponent {
 <lineup-lineup [data]="data"></lineup-lineup>
 ```
 
-TODO
+
+[CodePen](https://codepen.io/sgratzl/pen/QxYgzN)
+
+![Minimal Result](https://user-images.githubusercontent.com/4129778/34654173-32180ff8-f3f8-11e7-8469-229fa34a65dc.png)
+
 
 **Advanced Usage Example**
 
@@ -92,7 +96,11 @@ TODO
 </lineup-lineup>
 ```
 
-TODO
+
+[CodePen](https://codepen.io/sgratzl/pen/BVMdZL)
+
+![Advanced Result](https://user-images.githubusercontent.com/4129778/34654174-3235f784-f3f8-11e7-9361-44f5fa068bb9.png)
+
 
 
 Supported Browsers
