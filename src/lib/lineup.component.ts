@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmitter, ContentChildren } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnChanges,
+  OnDestroy, SimpleChanges, Input, Output, EventEmitter, ContentChildren,
+  ViewEncapsulation } from '@angular/core';
 import {LineUpRankingComponent} from './lineup-ranking.component';
 import {LineUpColumnDescComponent} from './lineup-column.component';
 import {
@@ -18,18 +20,20 @@ import {
   Ranking,
 } from 'lineupjs';
 
+
 @Component({
   selector: 'lineup-lineup',
   template: `
-    <main class="lu-wrapper" #lu></main>
+    <div #lu></div>
     <ng-content></ng-content>
   `,
   styleUrls: [
     './lineup.component.css',
     '../../node_modules/lineupjs/build/LineUpJS.css'
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
-export class LineUpComponent implements OnInit, AfterViewInit, IBuilderAdapterProps  {
+export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy, IBuilderAdapterProps  {
   @ViewChild('lu')
   private _main: ElementRef<HTMLDivElement>;
 
@@ -48,9 +52,9 @@ export class LineUpComponent implements OnInit, AfterViewInit, IBuilderAdapterPr
   highlight: number | null = null;
 
   @Output()
-  private readonly highlightChanged = new EventEmitter<number>();
+  private readonly highlightChange = new EventEmitter<number>();
   @Output()
-  private readonly selectionChanged = new EventEmitter<number[]>();
+  private readonly selectionChange = new EventEmitter<number[]>();
 
   @Input()
   singleSelection?: boolean;
@@ -119,11 +123,13 @@ export class LineUpComponent implements OnInit, AfterViewInit, IBuilderAdapterPr
   });
 
   onSelectionChanged(selection: number[]) {
-    this.selectionChanged.emit(selection);
+    this.selection = selection;
+    this.selectionChange.emit(selection);
   }
 
   onHighlightChanged(highlight: number) {
-    this.highlightChanged.emit(highlight);
+    this.highlight = highlight;
+    this.highlightChange.emit(highlight);
   }
 
   protected createInstance(node: HTMLElement, data: LocalDataProvider, options: Partial<ITaggleOptions>): LineUp | Taggle {
@@ -135,5 +141,17 @@ export class LineUpComponent implements OnInit, AfterViewInit, IBuilderAdapterPr
 
   ngAfterViewInit() {
     this._adapter.componentDidMount();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    const changed = new Set(Object.keys(changes).filter((d) => !changes[d].firstChange));
+    if (changed.size > 0) {
+      this._adapter.componentDidUpdate((prop) => changed.has(prop));
+    }
+  }
+
+  ngOnDestroy() {
+    this._adapter.componentWillUnmount();
   }
 }

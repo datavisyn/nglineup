@@ -1,4 +1,4 @@
-import { Component, Input, ContentChildren } from '@angular/core';
+import { Component, Input, ContentChildren, forwardRef } from '@angular/core';
 import {
   builderAdapter,
   IBuilderAdapterImposeColumnProps,
@@ -20,20 +20,6 @@ import {
 export abstract class ALineUpColumnBuilder {
   abstract build(): (string | IImposeColumnBuilder | INestedBuilder | IWeightedSumBuilder | IReduceBuilder | IScriptedBuilder);
 }
-
-@Component({
-  selector: 'lineup-column',
-  template: ''
-})
-export class LineUpColumnComponent extends ALineUpColumnBuilder {
-  @Input()
-  column: '*' | string = '*';
-
-  build() {
-    return builderAdapter.buildGeneric(this);
-  }
-}
-
 
 @Component({
   selector: 'lineup-ranking',
@@ -73,13 +59,28 @@ export class LineUpRankingComponent implements IBuilderAdapterRankingProps {
   build(data: LocalDataProvider): Ranking {
     return builderAdapter.buildRanking(this, data);
   }
+}
 
+
+@Component({
+  selector: 'lineup-column',
+  template: '',
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpColumnComponent) }]
+})
+export class LineUpColumnComponent extends ALineUpColumnBuilder {
+  @Input()
+  column: '*' | string = '*';
+
+  build() {
+    return builderAdapter.buildGeneric(this);
+  }
 }
 
 
 @Component({
   selector: 'lineup-impose-column',
-  template: ''
+  template: '',
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpImposeColumnComponent) }]
 })
 export class LineUpImposeColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterImposeColumnProps {
   @Input()
@@ -97,7 +98,8 @@ export class LineUpImposeColumnComponent extends ALineUpColumnBuilder implements
 
 @Component({
   selector: 'lineup-nested-column',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpNestedColumnComponent) }]
 })
 export class LineUpNestedColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterNestedColumnProps {
   @ContentChildren(LineUpColumnComponent)
@@ -114,7 +116,8 @@ export class LineUpNestedColumnComponent extends ALineUpColumnBuilder implements
 
 @Component({
   selector: 'lineup-weighted-column',
-  template: ''
+  template: '',
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpWeightedColumnComponent) }]
 })
 export class LineUpWeightedColumnComponent extends ALineUpColumnBuilder {
   @Input()
@@ -130,7 +133,8 @@ export class LineUpWeightedColumnComponent extends ALineUpColumnBuilder {
 
 @Component({
   selector: 'lineup-weighted-sum-column',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpWeightedSumColumnComponent) }]
 })
 export class LineUpWeightedSumColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterWeightedSumColumnProps {
   @ContentChildren(LineUpWeightedColumnComponent)
@@ -150,7 +154,8 @@ export class LineUpWeightedSumColumnComponent extends ALineUpColumnBuilder imple
 
 @Component({
   selector: 'lineup-reduce-column',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpReduceColumnComponent) }]
 })
 export class LineUpReduceColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterReduceColumnProps {
   @ContentChildren(LineUpColumnComponent)
@@ -170,7 +175,8 @@ export class LineUpReduceColumnComponent extends ALineUpColumnBuilder implements
 
 @Component({
   selector: 'lineup-scripted-column',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpScriptedColumnComponent) }]
 })
 export class LineUpScriptedColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterScriptColumnProps {
   @ContentChildren(LineUpColumnComponent)
@@ -189,7 +195,8 @@ export class LineUpScriptedColumnComponent extends ALineUpColumnBuilder implemen
 
 @Component({
   selector: 'lineup-support-column',
-  template: `<ng-content></ng-content>`
+  template: `<ng-content></ng-content>`,
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpSupportColumnComponent) }]
 })
 export class LineUpSupportColumnComponent extends ALineUpColumnBuilder implements IBuilderAdapterSupportColumnProps {
   @Input()
@@ -203,7 +210,8 @@ export class LineUpSupportColumnComponent extends ALineUpColumnBuilder implement
 
 @Component({
   selector: 'lineup-all-columns',
-  template: ''
+  template: '',
+  providers: [{provide: ALineUpColumnBuilder, useExisting: forwardRef(() => LineUpAllColumnsComponent) }]
 })
 export class LineUpAllColumnsComponent extends ALineUpColumnBuilder {
   build() {

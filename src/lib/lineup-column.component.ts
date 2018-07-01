@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import {
   builderAdapter,
   EAdvancedSortMethod,
@@ -37,15 +37,85 @@ export class LineUpColumnDescComponent implements IBuilderAdapterColumnDescProps
   @Input()
   custom?: {[key: string]: any};
 
+  /**
+   * label of the column
+   */
+  @Input()
+  label?: string;
+  /**
+   * the column type
+   */
+  @Input()
+  type?: string;
+
+  /**
+   * column description
+   */
+  @Input()
+  description?: string;
+
+  /**
+   * color of this column
+   */
+  @Input()
+  color?: string;
+
+  /**
+   * frozen column
+   * @default isSupportType
+   */
+  @Input()
+  frozen?: boolean;
+
+  /**
+   * whether the column can be removed or not
+   * @default false
+   */
+  @Input()
+  fixed?: boolean;
+
+  /**
+   * default renderer to use
+   */
+  @Input()
+  renderer?: string;
+
+  /**
+   * default group renderer to use
+   */
+  @Input()
+  groupRenderer?: string;
+
+  /**
+   * default summary renderer to use
+   */
+  @Input()
+  summaryRenderer?: string;
+
+  /**
+   * initial width of the column
+   * @default 100 or 200 for strings
+   */
+  @Input()
+  width?: number;
+
+  /**
+   * is this column visible by default
+   * @default true
+   */
+  @Input()
+  visible = true;
+
   build(_data: any[]): IColumnDesc {
     return builderAdapter.build(this);
   }
 }
 
-
+// see https://stackoverflow.com/questions/36063627/angular2-and-class-inheritance-support
 @Component({
-  selector: 'lineup-categorical-desc',
-  template: ''
+  selector: 'lineup-categorical-column-desc',
+  template: '',
+  providers: [{provide: LineUpColumnDescComponent, useExisting: forwardRef(() => LineUpCategoricalColumnDescComponent) }]
 })
 export class LineUpCategoricalColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterCategoricalColumnDescProps {
   @Input()
@@ -64,8 +134,9 @@ export class LineUpCategoricalColumnDescComponent extends LineUpColumnDescCompon
 
 
 @Component({
-  selector: 'lineup-date-desc',
-  template: ''
+  selector: 'lineup-date-column-desc',
+  template: '',
+  providers: [{provide: LineUpColumnDescComponent, useExisting: forwardRef(() => LineUpDateColumnDescComponent) }]
 })
 export class LineUpDateColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterDateColumnDescProps {
   @Input()
@@ -80,8 +151,9 @@ export class LineUpDateColumnDescComponent extends LineUpColumnDescComponent imp
 
 
 @Component({
-  selector: 'lineup-hierarchy-desc',
-  template: ''
+  selector: 'lineup-hierarchy-column-desc',
+  template: '',
+  providers: [{provide: LineUpColumnDescComponent, useExisting: forwardRef(() => LineUpHierarchyColumnDescComponent) }]
 })
 export class LineUpHierarchyColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterHierarchyColumnDescProps {
   @Input()
@@ -100,8 +172,9 @@ export class LineUpHierarchyColumnDescComponent extends LineUpColumnDescComponen
 
 
 @Component({
-  selector: 'lineup-number-desc',
-  template: ''
+  selector: 'lineup-number-column-desc',
+  template: '',
+  providers: [{provide: LineUpColumnDescComponent, useExisting: forwardRef(() => LineUpNumberColumnDescComponent) }]
 })
 export class LineUpNumberColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterNumberColumnDescProps {
   @Input()
@@ -122,8 +195,9 @@ export class LineUpNumberColumnDescComponent extends LineUpColumnDescComponent i
 
 
 @Component({
-  selector: 'lineup-string-desc',
-  template: ''
+  selector: 'lineup-string-column-desc',
+  template: '',
+  providers: [{provide: LineUpColumnDescComponent, useExisting: forwardRef(() => LineUpStringColumnDescComponent) }]
 })
 export class LineUpStringColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterStringColumnDescProps {
   @Input()
@@ -142,8 +216,9 @@ export class LineUpStringColumnDescComponent extends LineUpColumnDescComponent i
 
 
 @Component({
-  selector: 'lineup-actions-desc',
-  template: ''
+  selector: 'lineup-actions-column-desc',
+  template: '',
+  providers: [{provide: LineUpColumnDescComponent, useExisting: forwardRef(() => LineUpActionsColumnDescComponent) }]
 })
 export class LineUpActionsColumnDescComponent extends LineUpColumnDescComponent implements IBuilderAdapterActionsColumnDescProps {
   @Input()
