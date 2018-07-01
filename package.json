@@ -27,11 +27,11 @@
     "posttest": "npm run lint",
     "lint": "ng lint",
     "preversion": "npm test",
-    "prepublishOnly": "npm run build:prod && cd dist/nglineup",
-    "release:major": "npm version major && npm publish && git push --follow-tags",
-    "release:minor": "npm version minor && npm publish && git push --follow-tags",
-    "release:patch": "npm version patch && npm publish && git push --follow-tags",
-    "release:pre": "npm version prerelease && npm publish --tag=next && git push --follow-tags"
+    "postversion": "npm run build:prod",
+    "release:major": "npm version major && cd dist/nglineup && npm publish && git push --follow-tags",
+    "release:minor": "npm version minor && cd dist/nglineup && npm publish && git push --follow-tags",
+    "release:patch": "npm version patch && cd dist/nglineup && npm publish && git push --follow-tags",
+    "release:pre": "npm version prerelease && cd dist/nglineup && npm publish --tag=next && git push --follow-tags"
   },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
