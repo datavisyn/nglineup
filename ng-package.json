@@ -3,7 +3,14 @@
   "dest": "./dist/nglineup",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "cssUrl": "inline",
+    "styleIncludePaths": [
+      "./node_modules/lineupjs/build"
+    ],
+    "umdModuleIds": {
+      "lineupjs": "LineUpJS"
+    }
   },
   "whitelistedNonPeerDependencies": [
     "lineupjs"
