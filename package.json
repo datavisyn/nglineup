@@ -2,7 +2,7 @@
   "name": "nglineup",
   "description": "LineUp is an interactive technique designed to create, visualize and explore rankings of items based on a set of heterogeneous attributes.",
   "homepage": "https://github.com/datavisyn/nglineup",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "author": {
     "name": "Samuel Gratzl",
     "email": "samuel_gratzl@gmx.at"
@@ -27,7 +27,7 @@
     "posttest": "npm run lint",
     "lint": "ng lint",
     "preversion": "npm test",
-    "prepublishOnly": "npm run build:prod",
+    "postversion": "npm run build:prod",
     "release:major": "npm version major && cd dist/nglineup && npm publish && cd .. && git push --follow-tags",
     "release:minor": "npm version minor && cd dist/nglineup && npm publish && cd .. && git push --follow-tags",
     "release:patch": "npm version patch && cd dist/nglineup && npm publish && cd .. && git push --follow-tags",
