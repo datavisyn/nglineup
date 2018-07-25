@@ -86,6 +86,8 @@ export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   @Input()
   sidePanelCollapsed?: boolean;
   @Input()
+  hierarchyIndicator?: boolean;
+  @Input()
   defaultSlopeGraphMode?: 'item' | 'band';
   @Input()
   summaryHeader?: boolean;
