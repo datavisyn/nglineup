@@ -71,6 +71,6 @@
     "tslint": "~5.9.1"
   },
   "dependencies": {
-    "lineupjs": "^3.1.0"
+    "lineupjs": "^3.1.7"
   }
 }
