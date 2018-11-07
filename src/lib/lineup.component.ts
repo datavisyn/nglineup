@@ -116,6 +116,9 @@ export class LineUpComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   @Input()
   dynamicHeight?: (data: (IGroupItem | IGroupData)[], ranking: Ranking) => (IDynamicHeight | null);
 
+  @Input()
+  ignoreUnsupportedBrowser?: boolean;
+
   private readonly _adapter = new builderAdapter.Adapter({
     props: () => this,
     createInstance: (data: LocalDataProvider, options: Partial<ILineUpOptions>) =>

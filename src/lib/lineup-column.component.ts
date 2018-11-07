@@ -184,6 +184,8 @@ export class LineUpNumberColumnDescComponent extends LineUpColumnDescComponent i
   @Input()
   mapping?: 'linear' | 'sqrt' | 'pow1.1' | 'pow2' | 'pow3';
   @Input()
+  colorMapping?: string;
+  @Input()
   scripted?: string;
   @Input()
   sort?: EAdvancedSortMethod;
