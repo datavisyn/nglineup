@@ -2,10 +2,11 @@
   "name": "nglineup",
   "description": "LineUp is an interactive technique designed to create, visualize and explore rankings of items based on a set of heterogeneous attributes.",
   "homepage": "https://github.com/datavisyn/nglineup",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "author": {
     "name": "Samuel Gratzl",
-    "email": "samuel_gratzl@gmx.at"
+    "email": "sam@sgratzl.com",
+    "url": "https://www.sgratzl.com"
   },
   "license": "MIT",
   "bugs": {
