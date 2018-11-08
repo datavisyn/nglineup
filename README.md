@@ -13,7 +13,7 @@ Usage
 **Installation**
 
 ```bash
-npm install --save nglineup@next
+npm install --save nglineup
 ```
 
 **Minimal Usage Example**

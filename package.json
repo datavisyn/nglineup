@@ -72,6 +72,6 @@
     "zone.js": "^0.8.26"
   },
   "dependencies": {
-    "lineupjs": "^3.1.7"
+    "lineupjs": "~3.1.7"
   }
 }
