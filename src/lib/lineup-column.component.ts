@@ -16,10 +16,10 @@ import {
   IHierarchyColumnDesc,
   INumberColumnDesc,
   IPartialCategoryNode,
-  IStringColumnDesc,
   IActionColumnDesc,
   IAction,
-  IGroupAction
+  IGroupAction,
+  ILinkColumnDesc
 } from 'lineupjs';
 
 
@@ -211,7 +211,7 @@ export class LineUpStringColumnDescComponent extends LineUpColumnDescComponent i
   @Input()
   patternTemplates?: string[];
 
-  build(): IStringColumnDesc {
+  build(): ILinkColumnDesc {
     return builderAdapter.buildString(this);
   }
 }
