@@ -5,7 +5,7 @@ LineUp.js Angular Wrapper
 [![License: MIT][mit-image]][mit-url] [![NPM version][npm-image]][npm-url]  [![CircleCI][ci-image]][ci-url]
 
 LineUp is an interactive technique designed to create, visualize and explore rankings of items based on a set of heterogeneous attributes.
-This is a [Angular](https://angular.io/) wrapper around the JavaScript library [LineUp.js](https://github.com/datavisyn/lineupjs). Details about the LineUp visualization technique can be found at [http://lineup.caleydo.org](http://lineup.caleydo.org).
+This is a [Angular](https://angular.io/) wrapper around the JavaScript library [LineUp.js](https://github.com/lineupjs/lineupjs). Details about the LineUp visualization technique can be found at [http://lineup.caleydo.org](http://lineup.caleydo.org).
 
 Usage
 -----
@@ -118,7 +118,7 @@ Development Environment
 **Installation**
 
 ```bash
-git clone https://github.com/datavisyn/nglineup.git
+git clone https://github.com/lineupjs/nglineup.git
 cd nglineup
 npm install
 ```
@@ -152,5 +152,5 @@ Authors
 [npm-url]: https://npmjs.org/package/nglineup
 [mit-image]: https://img.shields.io/badge/License-MIT-yellow.svg
 [mit-url]: https://opensource.org/licenses/MIT
-[ci-image]: https://circleci.com/gh/datavisyn/nglineup.svg?style=shield
-[ci-url]: https://circleci.com/gh/datavisyn/nglineup
+[ci-image]: https://circleci.com/gh/lineupjs/nglineup.svg?style=shield
+[ci-url]: https://circleci.com/gh/lineupjs/nglineup
